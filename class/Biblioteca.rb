@@ -1,5 +1,5 @@
 module Biblioteca
-  require_relative "/home/flp-sp/Projects/sandbox/ruby/BibliotecaRuby/class/Book.rb"
+  require_relative "./Book.rb"
 
   include Book
 
@@ -10,8 +10,9 @@ module Biblioteca
       @listaLivros = listaLivros
     end
     
-    def adicionarLivro
+    def adicionarLivro(id, titulo, autor, ano, categoria, disponivel)
       novoLivro = Book::Book.new(id, titulo, autor, ano, categoria, disponivel)
+      puts novoLivro.disponivel?
     end
 
     def adicionarUser

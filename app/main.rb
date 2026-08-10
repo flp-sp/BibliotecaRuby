@@ -1,4 +1,7 @@
-require_relative "/home/flp-sp/Projects/sandbox/ruby/BibliotecaRuby/class/Book.rb"
+require_relative "../class/Biblioteca.rb"
 
-include Book
+include Biblioteca
 
+myLib = Biblioteca::Biblioteca.new(nil, nil, nil)
+
+myLib.adicionarLivro(21, "titulo", "autor", 1222, "categoria", true)
