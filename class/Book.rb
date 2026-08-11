@@ -1,5 +1,5 @@
 module Book
-  
+
   class Book
     attr_reader :id, :titulo, :autor, :ano, :categoria, :disponivel
 
