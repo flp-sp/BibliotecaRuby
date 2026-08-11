@@ -12,10 +12,25 @@ module Biblioteca
       @listaLivros = listaLivros
     end
     
-    def adicionarLivro(id, titulo, autor, ano, categoria, disponivel)
-      newBook = Book::Book.new(id, titulo, autor, ano, categoria, disponivel)
-      livroJson = JSON.generate(newBook.to_h)
-      File.write("data/books.json", livroJson)
+    def adicionarLivro(titulo, autor, ano, categoria, disponivel)
+      booksDbPath = "data/books.json"
+      livros = if File.exist?(booksDbPath) && !File.empty?(booksDbPath)
+                JSON.parse(File.read(booksDbPath))
+              else
+                []
+              end
+
+      lastBook = livros.last
+      lastId = if livros.empty?
+                  0
+                else
+                  lastBook["id"]
+                end
+      newBook = Book::Book.new(lastId += 1, titulo, autor, ano, categoria, disponivel)
+
+      livros << newBook.to_h
+      
+      File.write(booksDbPath, JSON.pretty_generate(livros))
     end
 
     def adicionarUser
