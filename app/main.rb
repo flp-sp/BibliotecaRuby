@@ -4,4 +4,4 @@ include Biblioteca
 
 myLib = Biblioteca::Biblioteca.new(nil, nil, nil)
 
-myLib.adicionarLivro(21, "titulo", "autor", 1222, "categoria", true)
+myLib.adicionarLivro(1, "Dom Casmurro", "Machado de Assis", 1899, "Romance", true)

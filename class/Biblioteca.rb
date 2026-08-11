@@ -1,9 +1,11 @@
 module Biblioteca
   require_relative "./Book.rb"
+  require "json"
 
   include Book
 
   class Biblioteca
+
     def initialize(listaUsers, listaEmprestimos, listaLivros)
       @listaUsers = listaUsers
       @listaEmprestimos = listaEmprestimos
@@ -11,8 +13,9 @@ module Biblioteca
     end
     
     def adicionarLivro(id, titulo, autor, ano, categoria, disponivel)
-      novoLivro = Book::Book.new(id, titulo, autor, ano, categoria, disponivel)
-      puts novoLivro.disponivel?
+      newBook = Book::Book.new(id, titulo, autor, ano, categoria, disponivel)
+      livroJson = JSON.generate(newBook.to_h)
+      File.write("data/books.json", livroJson)
     end
 
     def adicionarUser
