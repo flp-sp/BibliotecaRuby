@@ -6,5 +6,13 @@
     "ano": 1899,
     "categoria": "Romance",
     "disponivel": true
+  },
+  {
+    "id": 2,
+    "titulo": "Surrounded by idiots",
+    "autor": "Thomas Erikson",
+    "ano": "2014",
+    "categoria": "Auto-ajuda",
+    "disponivel": true
   }
 ]

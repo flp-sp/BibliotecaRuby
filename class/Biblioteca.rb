@@ -7,10 +7,11 @@ module Biblioteca
   class Biblioteca
 
     def initialize(booksDbPath = "data/books.json")
-      @booksDbPath = booksDbPath
-      @livros = carregarLivros
+      @booksDbPath = booksDbPath # caminho do banco dos livros
+      @livros = carregarLivros # array que guarda os objetos Books
     end
     
+    # instancia os livros salvos em objetos
     def carregarLivros
       if !File.exist?(@booksDbPath) || File.empty?(@booksDbPath)
         return []
@@ -33,6 +34,7 @@ module Biblioteca
       end
     end
 
+    # adiciona um livro no banco
     def adicionarLivro(titulo, autor, ano, categoria, disponivel)
       livros = if File.exist?(@booksDbPath) && !File.empty?(@booksDbPath)
                 JSON.parse(File.read(@booksDbPath))
@@ -49,6 +51,7 @@ module Biblioteca
       newBook = Book::Book.new(lastId += 1, titulo, autor, ano, categoria, disponivel)
 
       livros << newBook.to_h
+      @livros << newBook
       
       File.write(@booksDbPath, JSON.pretty_generate(livros))
     end
@@ -78,11 +81,17 @@ module Biblioteca
     end
 
     def listarLivros
-      #puts @livros[0].id
-    end
-
-    def construirTela
-      
+      if @livros.respond_to?("each")
+        @livros.each do |livro|
+          puts "\n========================================\n"
+          puts livro.id
+          puts livro.titulo
+          puts livro.autor
+          puts livro.ano
+          puts livro.categoria
+          puts livro.disponivel
+        end
+      end
     end
   end
 end
