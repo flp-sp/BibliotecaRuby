@@ -1,5 +1,16 @@
 module User
   class User
+    attr_reader :id, :nome, :email, :listaEmprestadosUser
+
+    def to_h
+      {
+        id: @id,
+        nome: @nome,
+        email: @email,
+        listaEmprestadosUser: @listaEmprestadosUser
+      }
+    end
+
     def initialize(id, nome, email, listaEmprestadosUser)
       @id = id
       @nome = nome
@@ -7,11 +18,12 @@ module User
       @listaEmprestadosUser = listaEmprestadosUser
     end
 
-    def emprestarLivro
+    # apenas para alterar a variavel [listaEmprestadosUser]
+    def emprestarLivro(idLivro)
       
     end
 
-    def devolverLivro
+    def devolverLivro(idLivro)
       
     end
 

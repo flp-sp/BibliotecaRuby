@@ -1,6 +1,20 @@
 module Emprestimo
   class Emprestimo
-    def initialize(userId, livroId, dataEmprestimo, dataDevolucao, status)
+    attr_reader :id, :userId, :livroId, :dataEmprestimo, :dataDevolucao, :status
+
+    def to_h
+    {
+      id: @id,
+      userId: @userId, 
+      livroId: @livroId, 
+      dataEmprestimo: @dataEmprestimo, 
+      dataDevolucao: @dataDevolucao, 
+      status: @status
+    }  
+    end
+
+    def initialize(id, userId, livroId, dataEmprestimo, dataDevolucao, status)
+      @id = id
       @userId = userId
       @livroId = livroId
       @dataEmprestimo = dataEmprestimo

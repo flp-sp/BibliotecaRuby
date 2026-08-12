@@ -26,6 +26,31 @@ while true
 
   when "2"
     myLib.listarLivros
+
+  when "3"
+    puts "Insira o nome:"
+    nome = gets.chomp
+
+    puts "Insira o email:"
+    email = gets.chomp
+
+    myLib.adicionarUser(nome, email)
+
+  when "4"
+    myLib.listarUsers
+
+  when "5"
+    puts "Insira o ID do usuario:"
+    userId = gets.chomp
+
+    puts "Insira o ID do livro:"
+    bookId = gets.chomp
+
+    myLib.novoEmprestimo(userId, bookId)
+
+    when "6"
+      myLib.listarEmprestimos
+    
   when "0"
     break
   end
